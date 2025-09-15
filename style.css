@@ -992,11 +992,7 @@ video {
     padding-top: 22px;
   }
 }
-
-@media screen and (min-width:2560px){
-  main{
-    margin: 0 336px;
-  }
+@media screen and (min-width:1440px){
 
   .home_container{
     min-width: 100%;
@@ -1005,21 +1001,28 @@ video {
 
   .hes_icon{
     margin-top: 8px;
+  } 
+  .footer,.main,header,main,footer{
+    overflow-x: hidden;
   }
-  .hd_hiddentext{
+  main{
+    margin: 0 16px;
+  }
+
+ .scrollbar{
+  grid-auto-columns: calc(14.2857% - 9.42857px);
+ }
+
+ .hd_hiddentext{
   display: initial;
   font-size: 14px;
   padding-right: 24px;
   font-weight: 500;
  }
-
  .subhead:nth-child(2){
   margin-top: 25px;
  }
 
- .scrollbar{
-  grid-auto-columns: calc(14.2857% - 9.42857px);
- }
  main::before{
   left: -5px;
   min-height: 3040px;
@@ -1029,17 +1032,10 @@ video {
   top:150px;
   min-height: 3095px;
  }
+.last_icon_credits{
+  padding-bottom: 16px;
+ }
 
- .left_right_arrow{
-  display: flex;
-  margin: 0 20px;
-  margin-bottom: 31px;
-  margin-top: -31px;
- }
- .SHA>*{
-  width: 30.65%;
-  padding-bottom: 49px;
- }
  .icon{
   margin-bottom: 4px;
  }
@@ -1047,7 +1043,27 @@ video {
 .social{
   margin-bottom: 7px;
 }
- .last_icon_credits{
-  padding-bottom: 16px;
+
+.SHA>*{
+  padding-bottom: 49px;
+}
+
+ .left_right_arrow{
+  display: flex;
+  margin: 0 20px;
+  margin-bottom: 31px;
+  margin-top: -31px;
  }
+}
+
+@media screen and (min-width:2560px){
+  main{
+    margin: 0 336px;
+  }
+
+ .SHA>*{
+  width: 30.65%;
+ }
+
+ 
 }
