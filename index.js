@@ -347,12 +347,7 @@ function create_flexhead()
 }
 
 function updateaxis()
-{if(key===3)
-                            {
-                                ce.querySelector('div:nth-child(3)').style.setProperty('right','-74px','important')
-                                ce.querySelector('span:nth-child(2)').style.setProperty('padding-right',`${Math.max(25,32-(32-25)*i/Scroll_count)}px`,'important')
-                            }
-
+{
     console.log(u_axis)    
     if(key===1)
     {
