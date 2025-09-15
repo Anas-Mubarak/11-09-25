@@ -121,7 +121,7 @@ function scrollcheck() {
         })
         py=scrollY
     }
-    else if(key===2||key==3)
+    else if(key===2||key==3||key==4)
     {
         console.log('working scroll check')
         if(scrollY>0&&scrollani==0)
@@ -165,6 +165,7 @@ function scrollcheck() {
                             ce.querySelector('span:nth-child(2)').style.setProperty('font-family','abnb1','important')
                             ce.querySelector('span:nth-child(2)').style.setProperty('color','rgb(34,34,34)','important')
                             console.log('padding')
+                            //liner scaling 
                             ce.querySelector('span:nth-child(2)').style.setProperty('padding-right',`${Math.max(21,32-(32-21)*i/Scroll_count)}px`,'important')
                             ce.querySelector('span:nth-child(2)').style.setProperty('padding-left',`${Math.max(14,32-(32-14)*i/Scroll_count)}px`,'important')
                             ce.querySelector('span:nth-child(2)').style.setProperty('width','min-content','important')
@@ -172,11 +173,12 @@ function scrollcheck() {
                             ce.querySelector('div:nth-child(3)>svg').style.setProperty('height','12px','important')
                             ce.querySelector('div:nth-child(3)>svg').style.setProperty('width','12px','important')
                             ce.querySelector('div:nth-child(3)').style.setProperty('right','6px','important')
-                            if(key===3)
+                            if(key===3||key===4)
                             {
                                 ce.querySelector('div:nth-child(3)').style.setProperty('right','-74px','important')
                                 ce.querySelector('span:nth-child(2)').style.setProperty('padding-right',`${Math.max(25,32-(32-25)*i/Scroll_count)}px`,'important')
                             }
+
                             if(!animeation_f)
                             {
                                 requestAnimationFrame(()=>{    
@@ -195,10 +197,16 @@ function scrollcheck() {
                                 {
                                     ce.style.setProperty('width',`${ce.querySelector('span:nth-child(2)').getClientRects()[0].width+34+'px'}`,'important')
                                 }
-                                else if(key===3)
+                                else if(key===3||key===4)
                                 {
                                     console.log(key)
                                     ce.style.setProperty('width',`${ce.querySelector('span:nth-child(2)').getClientRects()[0].width+29+'px'}`,'important')
+                                }
+                                if(key==4)
+                                {
+                                    scrollbar.style.top = '89px'
+                                    hicon.style.marginBottom = '8px'
+                                    sliding_bar.style.display = 'none'
                                 } 
                             }
                         }
@@ -254,9 +262,12 @@ function scrollcheck() {
                             animeation_f = 0
                         })
                         }
+                        scrollbar.style.top = ''
                         searchbar.style.transform = ``
                         scrollbar.style.height = ''
                         scrollbar.style.position = ''
+                        hicon.style.marginBottom = ''
+                        sliding_bar.style.display = ''
                     }
                 }
 
@@ -335,6 +346,48 @@ function create_flexhead()
     document.querySelector('main').prepend(flexible_heading)
 }
 
+function updateaxis()
+{if(key===3)
+                            {
+                                ce.querySelector('div:nth-child(3)').style.setProperty('right','-74px','important')
+                                ce.querySelector('span:nth-child(2)').style.setProperty('padding-right',`${Math.max(25,32-(32-25)*i/Scroll_count)}px`,'important')
+                            }
+
+    console.log(u_axis)    
+    if(key===1)
+    {
+        console.log('getc',hes_text[u_axis].getClientRects()[0].bottom+5)
+        // console.log('2',hes_text[u_axis].getClientRects()[0].width)
+        let cords =  hes_text[u_axis].offsetTop+hes_text[u_axis].getClientRects()[0].height
+        hes_text[u_axis].style.fontWeight = 600
+        sliding_bar.style.width = hes_text[u_axis].getClientRects()[0].width
+        sliding_bar.style.top = cords+padding
+        sliding_bar.style.left = hes_text[u_axis].getClientRects()[0].x
+    }
+    else if(key==2||key==3)
+    {
+        console.log('working update axis 2')
+        let cords = video_icons[u_axis].getClientRects()[0].y+video_icons[u_axis].getClientRects()[0].height
+        console.log('cords',cords)
+        hes_text[u_axis].style.fontWeight = 600
+        hes_text[u_axis].style.color = 'rgb(36,36,36)'
+        sliding_bar.style.width = (video_icons[u_axis].getClientRects()[0].width)+7
+        sliding_bar.style.top = cords+padding
+        sliding_bar.style.left = (video_icons[u_axis].getClientRects()[0].x)-7
+    }
+    else if(key==4)
+    { 
+        console.log('working update axis 3')
+        let cords = video_icons[u_axis].getClientRects()[0].y+video_icons[u_axis].getClientRects()[0].height
+        console.log('cords',cords)
+        hes_text[u_axis].style.fontWeight = 600
+        hes_text[u_axis].style.color = 'rgb(36,36,36)'
+        sliding_bar.style.width = (video_icons[u_axis].getClientRects()[0].width)+7
+        sliding_bar.style.top = cords+padding
+        sliding_bar.style.left = (video_icons[u_axis].getClientRects()[0].x)-344
+    }
+}
+
 function checkscreensize() {
     if (window.matchMedia('(max-width:767px)').matches) {
         key = 1
@@ -353,8 +406,17 @@ function checkscreensize() {
         slide_Check()
         updateaxis()
     }
-    else if (window.matchMedia('(min-width:1024px)').matches) {
+    else if (window.matchMedia('(max-width:2559px)').matches) {
         key = 3
+        padding = 4
+        create_flexhead()
+        scrollcheck()
+        slide_Check()
+        console.log('pczzzz')
+        updateaxis()
+    } 
+    else if (window.matchMedia('(min-width:2560px)').matches) {
+        key = 4
         padding = 4
         create_flexhead()
         scrollcheck()
@@ -366,44 +428,6 @@ function checkscreensize() {
 
 
 checkscreensize()
-
-function updateaxis()
-{
-    console.log(u_axis)    
-    if(key===1)
-    {
-        console.log('getc',hes_text[u_axis].getClientRects()[0].bottom+5)
-        // console.log('2',hes_text[u_axis].getClientRects()[0].width)
-        let cords =  hes_text[u_axis].offsetTop+hes_text[u_axis].getClientRects()[0].height
-        hes_text[u_axis].style.fontWeight = 600
-        sliding_bar.style.width = hes_text[u_axis].getClientRects()[0].width
-        sliding_bar.style.top = cords+padding
-        sliding_bar.style.left = hes_text[u_axis].getClientRects()[0].x
-    }
-    else if(key==2)
-    {
-        console.log('working update axis 2')
-        let cords = video_icons[u_axis].getClientRects()[0].y+video_icons[u_axis].getClientRects()[0].height
-        console.log('cords',cords)
-        hes_text[u_axis].style.fontWeight = 600
-        hes_text[u_axis].style.color = 'rgb(36,36,36)'
-        sliding_bar.style.width = (video_icons[u_axis].getClientRects()[0].width)+7
-        sliding_bar.style.top = cords+padding
-        sliding_bar.style.left = (video_icons[u_axis].getClientRects()[0].x)-7
-    }
-    else if(key==3)
-    { 
-        console.log('working update axis 3')
-        let cords = video_icons[u_axis].getClientRects()[0].y+video_icons[u_axis].getClientRects()[0].height
-        console.log('cords',cords)
-        hes_text[u_axis].style.fontWeight = 600
-        hes_text[u_axis].style.color = 'rgb(36,36,36)'
-        sliding_bar.style.width = (video_icons[u_axis].getClientRects()[0].width)+7
-        sliding_bar.style.top = cords+padding
-        sliding_bar.style.left = (video_icons[u_axis].getClientRects()[0].x)-7
-    }
-}
-
 updateaxis()
 
 function scrollfunc() {

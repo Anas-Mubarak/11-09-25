@@ -54,6 +54,10 @@ header {
   border-radius: 50%;
 }
 
+.hd_hiddentext{
+  display: none;
+}
+
 .globe_and_lines svg{
   margin: 12px;
 }
@@ -240,7 +244,7 @@ header {
 }
 
 .search_text {
-  padding-left: 2px;
+  /* padding-left: 2px; padding removed in update*/
   font-size: 14px;
   line-height: 18px;
   font-weight: 500;
@@ -569,6 +573,11 @@ video {
   height:30px;
   margin-bottom: 2px;
 }
+
+.fi:first-child>d{
+  stroke: rgb(218, 18, 73);
+}
+
 .fi:first-child{
   color: rgb(218, 18, 73);
   font-weight: 500;
@@ -932,6 +941,7 @@ video {
   main::after{
     height: 2331.25px;
     width: 32px;
+    right: 0px;
   }
 
   .firsticon,.secondicon{
@@ -981,4 +991,63 @@ video {
     padding-bottom: 17px;
     padding-top: 22px;
   }
+}
+
+@media screen and (min-width:2560px){
+  main{
+    margin: 0 336px;
+  }
+
+  .home_container{
+    min-width: 100%;
+    left: 0px;
+  }
+
+  .hes_icon{
+    margin-top: 8px;
+  }
+  .hd_hiddentext{
+  display: initial;
+  font-size: 14px;
+  padding-right: 24px;
+  font-weight: 500;
+ }
+
+ .subhead:nth-child(2){
+  margin-top: 25px;
+ }
+
+ .scrollbar{
+  grid-auto-columns: calc(14.2857% - 9.42857px);
+ }
+ main::before{
+  left: -5px;
+  min-height: 3040px;
+ }
+ main::after{
+  right: -5px;
+  top:150px;
+  min-height: 3095px;
+ }
+
+ .left_right_arrow{
+  display: flex;
+  margin: 0 20px;
+  margin-bottom: 31px;
+  margin-top: -31px;
+ }
+ .SHA>*{
+  width: 30.65%;
+  padding-bottom: 49px;
+ }
+ .icon{
+  margin-bottom: 4px;
+ }
+
+.social{
+  margin-bottom: 7px;
+}
+ .last_icon_credits{
+  padding-bottom: 16px;
+ }
 }
