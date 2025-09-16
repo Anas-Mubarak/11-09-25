@@ -993,6 +993,10 @@ video {
   }
 }
 @media screen and (min-width:1440px){
+  body{
+  max-width: 100%;
+  overflow-x: hidden;
+  }
 
   .home_container{
     min-width: 100%;
@@ -1002,9 +1006,7 @@ video {
   .hes_icon{
     margin-top: 8px;
   } 
-  .footer,.main,header,main,footer{
-    overflow-x: hidden;
-  }
+
   main{
     margin: 0 16px;
   }
@@ -1019,6 +1021,7 @@ video {
   padding-right: 24px;
   font-weight: 500;
  }
+ 
  .subhead:nth-child(2){
   margin-top: 25px;
  }
@@ -1027,11 +1030,13 @@ video {
   left: -5px;
   min-height: 3040px;
  }
+
  main::after{
   right: -5px;
   top:150px;
   min-height: 3095px;
  }
+
 .last_icon_credits{
   padding-bottom: 16px;
  }
@@ -1053,6 +1058,7 @@ video {
   margin: 0 20px;
   margin-bottom: 31px;
   margin-top: -31px;
+  visibility: hidden;
  }
 }
 
@@ -1061,9 +1067,11 @@ video {
     margin: 0 336px;
   }
 
+  .left_right_arrow{
+    visibility: visible;
+  }
+
  .SHA>*{
   width: 30.65%;
  }
-
- 
 }

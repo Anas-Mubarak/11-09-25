@@ -51,14 +51,14 @@ function scrollcheck() {
                 element.style.transform = `scale(${sl}) translate(${tl}px)`
                 element.style.opacity = (1 - scrollY/100 * 1)
                 let cchild = element.children
-                // console.log('cchild',typeof(cchild))
-                if(sl==0.4)
-                {
-                    for(i=0;i<cchild.length;i++)
-                    {
-                    // console.log(cchild[i])
-                    } 
-                }         
+                // // console.log('cchild',typeof(cchild))
+                // if(sl==0.4)
+                // {
+                //     for(i=0;i<cchild.length;i++)
+                //     {
+                //     // console.log(cchild[i])
+                //     } 
+                // }         
             }) 
         }
         else
@@ -121,7 +121,7 @@ function scrollcheck() {
         })
         py=scrollY
     }
-    else if(key===2||key==3||key==4)
+    else if(key===2||key==3||key==4||key==5)
     {
         console.log('working scroll check')
         if(scrollY>0&&scrollani==0)
@@ -173,7 +173,7 @@ function scrollcheck() {
                             ce.querySelector('div:nth-child(3)>svg').style.setProperty('height','12px','important')
                             ce.querySelector('div:nth-child(3)>svg').style.setProperty('width','12px','important')
                             ce.querySelector('div:nth-child(3)').style.setProperty('right','6px','important')
-                            if(key===3||key===4)
+                            if(key===3||key===4||key==5)
                             {
                                 ce.querySelector('div:nth-child(3)').style.setProperty('right','-74px','important')
                                 ce.querySelector('span:nth-child(2)').style.setProperty('padding-right',`${Math.max(25,32-(32-25)*i/Scroll_count)}px`,'important')
@@ -197,12 +197,12 @@ function scrollcheck() {
                                 {
                                     ce.style.setProperty('width',`${ce.querySelector('span:nth-child(2)').getClientRects()[0].width+34+'px'}`,'important')
                                 }
-                                else if(key===3||key===4)
+                                else if(key===3||key===4||key==5)
                                 {
                                     console.log(key)
                                     ce.style.setProperty('width',`${ce.querySelector('span:nth-child(2)').getClientRects()[0].width+29+'px'}`,'important')
                                 }
-                                if(key==4)
+                                if(key==4||key==5)
                                 {
                                     scrollbar.style.top = '89px'
                                     hicon.style.marginBottom = '8px'
@@ -359,7 +359,7 @@ function updateaxis()
         sliding_bar.style.top = cords+padding
         sliding_bar.style.left = hes_text[u_axis].getClientRects()[0].x
     }
-    else if(key==2||key==3)
+    else if(key==2||key==3||key==4)
     {
         console.log('working update axis 2')
         let cords = video_icons[u_axis].getClientRects()[0].y+video_icons[u_axis].getClientRects()[0].height
@@ -369,17 +369,15 @@ function updateaxis()
         sliding_bar.style.width = (video_icons[u_axis].getClientRects()[0].width)+7
         sliding_bar.style.top = cords+padding
         sliding_bar.style.left = (video_icons[u_axis].getClientRects()[0].x)-7
-    }
-    else if(key==4)
-    { 
-        console.log('working update axis 3')
-        let cords = video_icons[u_axis].getClientRects()[0].y+video_icons[u_axis].getClientRects()[0].height
-        console.log('cords',cords)
-        hes_text[u_axis].style.fontWeight = 600
-        hes_text[u_axis].style.color = 'rgb(36,36,36)'
-        sliding_bar.style.width = (video_icons[u_axis].getClientRects()[0].width)+7
-        sliding_bar.style.top = cords+padding
-        sliding_bar.style.left = (video_icons[u_axis].getClientRects()[0].x)-344
+        if(key==4)
+        {
+
+            sliding_bar.style.left = (video_icons[u_axis].getClientRects()[0].x)-23
+        }
+        else if(key==5)
+        {
+            sliding_bar.style.left = (video_icons[u_axis].getClientRects()[0].x)-344
+        }
     }
 }
 
@@ -401,24 +399,34 @@ function checkscreensize() {
         slide_Check()
         updateaxis()
     }
-    else if (window.matchMedia('(max-width:2559px)').matches) {
+    else if (window.matchMedia('(max-width:1439px)').matches) {
         key = 3
         padding = 4
         create_flexhead()
         scrollcheck()
         slide_Check()
-        console.log('pczzzz')
+        console.log('pczzzz-S')
         updateaxis()
     } 
-    else if (window.matchMedia('(min-width:2560px)').matches) {
+    else if (window.matchMedia('(max-width:2559px)').matches) {
         key = 4
         padding = 4
         create_flexhead()
         scrollcheck()
         slide_Check()
-        console.log('pczzzz')
+        console.log('pczzzz-M')
         updateaxis()
     }
+    else if (window.matchMedia('(min-width:2560px)').matches) {
+        key = 5
+        padding = 4
+        create_flexhead()
+        scrollcheck()
+        slide_Check()
+        console.log('pczzzz-L')
+        updateaxis()
+    }
+    window.setTimeout(updateaxis,200)
 }
 
 
@@ -477,3 +485,5 @@ window.addEventListener('resize', () => {
 })
 
 window.addEventListener('scroll', scrollcheck)
+
+window.setTimeout(updateaxis,200)
