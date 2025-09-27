@@ -480,6 +480,7 @@ window.addEventListener('load', () => {
 
 
 window.addEventListener('resize', () => {
+    location.reload()
     console.log('change')
     checkscreensize()
 })
