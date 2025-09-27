@@ -30,8 +30,6 @@ sliding_bar.style.height = '3px'
 sliding_bar.style.position = 'absolute'
 sliding_bar.style.backgroundColor = 'black'
 hicon.appendChild(sliding_bar)
-console.log(subhead)
-console.log('type vi',typeof(vi))
 
 let flexible_heading = document.createElement('div')
 flexible_heading.classList.add('flexible_heading')
@@ -79,8 +77,6 @@ function scrollcheck() {
             }); 
         }
 
-        console.log((hes_text[0].getBoundingClientRect().y)-70)
-
         if((hes_text[0].getBoundingClientRect().y-79)<=0&&scrollY>hicon.getBoundingClientRect().bottom)
         {
             console.log('entered')
@@ -116,7 +112,6 @@ function scrollcheck() {
 
         close_mobonly.addEventListener('click',()=>
         {
-            console.log(mob_only)
             mob_only.classList.toggle('close_mob')
         })
         py=scrollY
@@ -142,10 +137,8 @@ function scrollcheck() {
                     for(let j=3;j<=8;j++)
                     {
                         let ce = searchbar.querySelector(`div:nth-child(${j})`)
-                        console.log('height:',Math.max(46,120-((120-46)*i/Scroll_count)))
                         searchbar.style.height = `${Math.max(46,120-((120-46)*i/Scroll_count))}`
                         searchbar.style.width = 'min-content'
-                        console.log(j,'is',ce)
                         ce.style.setProperty('font-weight','500','important')
                         ce.style.setProperty('font-size','14','important')
                         if(j<5)
@@ -181,8 +174,7 @@ function scrollcheck() {
 
                             if(!animeation_f)
                             {
-                                requestAnimationFrame(()=>{    
-                                console.log('s',ce.querySelector('span:nth-child(2)').getClientRects()[0].width+'px')                                
+                                requestAnimationFrame(()=>{                               
                                 ce.style.setProperty('width',`${ce.querySelector('span:nth-child(2)').getClientRects()[0].width-10+'px'}`,'important')
                                 animeation_f = 1
                             })
@@ -199,7 +191,6 @@ function scrollcheck() {
                                 }
                                 else if(key===3||key===4||key==5)
                                 {
-                                    console.log(key)
                                     ce.style.setProperty('width',`${ce.querySelector('span:nth-child(2)').getClientRects()[0].width+29+'px'}`,'important')
                                 }
                                 if(key==4||key==5)
@@ -281,8 +272,6 @@ function scrollcheck() {
 function update_slidepos()
 {
     scrolling_bar.forEach((element,index) => {
-    console.log(element)
-    console.log(element.scrollLeft)
     element.addEventListener('scroll',()=>{
         if(element.scrollLeft>0)
         {
@@ -313,7 +302,6 @@ function update_slidepos()
             lr_arrow[index].lastElementChild.style.backgroundColor = ''
             lr_arrow[index].lastElementChild.children[0].children[0].style.setProperty('stroke','')
         }
-        console.log('slide',element.scrollLeft)
     })
     });
 }
@@ -351,7 +339,6 @@ function updateaxis()
     console.log(u_axis)    
     if(key===1)
     {
-        console.log('getc',hes_text[u_axis].getClientRects()[0].bottom+5)
         // console.log('2',hes_text[u_axis].getClientRects()[0].width)
         let cords =  hes_text[u_axis].offsetTop+hes_text[u_axis].getClientRects()[0].height
         hes_text[u_axis].style.fontWeight = 600
@@ -363,7 +350,6 @@ function updateaxis()
     {
         console.log('working update axis 2')
         let cords = video_icons[u_axis].getClientRects()[0].y+video_icons[u_axis].getClientRects()[0].height
-        console.log('cords',cords)
         hes_text[u_axis].style.fontWeight = 600
         hes_text[u_axis].style.color = 'rgb(36,36,36)'
         sliding_bar.style.width = (video_icons[u_axis].getClientRects()[0].width)+7
@@ -458,8 +444,6 @@ window.addEventListener('load', () => {
     for (let i = 0; i < load_icon.length; i++) {
         load_icon[i].style.display = 'inline'
         after_load[i].style.display = 'none'
-        console.log(load_icon[i])
-        console.log(after_load[i])
         video_icons[i].addEventListener('click', (e) => {
         for(j=0;j<load_icon.length;j++)
         {
@@ -469,7 +453,6 @@ window.addEventListener('load', () => {
         }
         console.log('setting display')
         u_axis = Number(e.currentTarget.getAttribute('id'))
-        console.log(u_axis)
         let ctnow =  e.currentTarget.childNodes[1]
         ctnow.children[ctnow.children.length-1].style.display = ''
         ctnow.children[ctnow.children.length-2].style.display = ''
@@ -481,7 +464,6 @@ window.addEventListener('load', () => {
 
 window.addEventListener('resize', () => {
     location.reload()
-    console.log('change')
     checkscreensize()
 })
 
